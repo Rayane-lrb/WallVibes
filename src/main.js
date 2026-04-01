@@ -13,3 +13,4 @@ themeBtn.addEventListener("click", () => {
   localStorage.setItem("theme", newTheme);
   themeSwitch(newTheme);
 });
+
