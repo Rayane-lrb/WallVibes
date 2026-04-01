@@ -8,23 +8,46 @@
     <title>ww-i</title>
   </head>
 
-  <body>
-    <div id="app">
-        <nav class="navbar">
-          <div class="nav-left">
-            <h1 class="logo">Brusselexplorer</h1>
-            <ul class="nav-left-list">
-              <a href="#locaties">Menu</a>
-              <a href="#favorieten">Favorieten</a>
-            </ul>
-          </div>
-          <div class="nav-right">
-            <button id="themeBtn"></button>
-          </div>
-        </nav>
-        <main id="main-content"></main>
-      </div>
-    </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<body>
+  <div id="app">
+    <nav class="navbar">
+      <div class="nav-left">
+      <h1 class="logo">WW-I</h1>
+      <ul class="nav-left">
+      <a href="#locaties">Menu</a>
+      <a href="#favorieten">Favorieten</a>
+      </ul>
+</div>
+<div class="nav-right">
+  <button id="themeBtn"></button>
+  </div>
+    </nav>
+    <main id="main-content">
+      <section class="search-filter-bar">
+        <div class="search-bar-container">
+          <input 
+          type="text"
+          id="searchInput"
+          placeholder="Zoek een locatie in Brussel..."/>
+          <button id="searchBtn">🔍</button>
+        </div>
+        <div class="filter-wrapper">
+          <select id="sortSelect">
+            <option value=""Sorteren...></option>
+            <option value="az">A -> Z</option>
+            <option value="">Z -> A</option>
+            <option value="nieuwst">Nieuwste eerst</option>
+            <option value="oudste">Oudste eerst</option>
+          </select>
+          <button id="resetFilters"> X Reset</button>
+        </div>
+      </section>
+      <section id="results-container">
+
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
