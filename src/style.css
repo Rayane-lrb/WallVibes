@@ -1,8 +1,8 @@
-.dark-theme {
+body.dark-theme {
   background-color: black;
   color: white;
 }
-.light-theme {
+body.light-theme {
   background-color: white;
   color: black;
 }
