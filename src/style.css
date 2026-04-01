@@ -1,1 +1,37 @@
+body.dark-theme {
+  background-color: black;
+  color: white;
+}
+body.light-theme {
+  background-color: white;
+  color: black;
+}
+body {
+  font-size: 20px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
 
+.nav-left {
+  float: left;
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav-left h1 {
+  float: left;
+}
+
+.nav-left ul {
+  float: right;
+}
+
+button#themeBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 360px;
+}
