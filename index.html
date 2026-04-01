@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="...." />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
-    <title>ww-i</title>
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="nav-div">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="...." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css" />
+  <title>ww-i</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="nav-div">
       <nav class="navbar">
         <div class="nav-left">
           <h1 class="logo">WW-I</h1>
@@ -20,34 +22,34 @@
           </ul>
         </div>
         <div class="nav-right">
-          <button id="themeBtn"></button>
+          <button id="themeBtn">
+<img id="themeBtn-img" src="public/moon.svg" alt="dark-theme moon">
+            <i class="lucide-moon"></i>
+          </button>
         </div>
       </nav>
-      </div>
-      <main id="main-content">
-        <section class="search-filter-bar">
-          <div class="search-bar-container">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Zoek een locatie in Brussel..."
-            />
-            <button id="searchBtn">🔍</button>
-          </div>
-          <div class="filter-wrapper">
-            <select id="sortSelect">
-              <option value="" disabled selected hidden>Sorteren</option>
-              <option value="az">A -> Z</option>
-              <option value="">Z -> A</option>
-              <option value="nieuwst">Nieuwste eerst</option>
-              <option value="oudste">Oudste eerst</option>
-            </select>
-            <button id="resetFilters">X Reset</button>
-          </div>
-        </section>
-        <section id="results-container"></section>
-      </main>
     </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <main id="main-content">
+      <section class="search-filter-bar">
+        <div class="search-bar-container">
+          <input type="text" id="searchInput" placeholder="Zoek een locatie in Brussel..." />
+          <button id="searchBtn">🔍</button>
+        </div>
+        <div class="filter-wrapper">
+          <select id="sortSelect">
+            <option value="" disabled selected hidden>Sorteren</option>
+            <option value="az">A -> Z</option>
+            <option value="">Z -> A</option>
+            <option value="nieuwst">Nieuwste eerst</option>
+            <option value="oudste">Oudste eerst</option>
+          </select>
+          <button id="resetFilters">X Reset</button>
+        </div>
+      </section>
+      <section id="results-container"></section>
+    </main>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
