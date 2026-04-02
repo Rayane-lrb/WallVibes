@@ -10,6 +10,8 @@ const searchBar = document.getElementById("searchInput");
 const sortSelect = document.getElementById("sortSelect");
 const geenResultaatbericht = document.getElementById("geenResultaatbericht");
 const savedTheme = localStorage.getItem("theme") || "light-theme";
+const resetBtn = document.getElementById("reset");
+const originalFavs = [];
 
 function themeSwitch(theme) {
   body.classList.remove("light-theme", "dark-theme");
@@ -36,9 +38,9 @@ window.addEventListener("load", () => {
 });
 function displayFavs() {
   const favs = JSON.parse(localStorage.getItem("favs")) || [];
-  console.log(favs);
   favs.forEach((item) => {
     const divCard = document.createElement("div");
+    originalFavs.push(divCard);
     divCard.classList.add("card", "hidden");
     divCard.dataset.name = item.name_nl;
     divCard.innerHTML = `
@@ -83,6 +85,7 @@ const observer = new IntersectionObserver((entries) => {
 sortSelect.addEventListener("change", () => {
   const selectedValue = sortSelect.value;
   sortCards(selectedValue);
+  resetBtn.hidden = false;
 });
 function sortCards(selectedValue) {
   const cards = Array.from(document.querySelectorAll(".card"));
@@ -126,4 +129,10 @@ searchBar.addEventListener("input", () => {
   } else {
     geenResultaatbericht.style.display = "none";
   }
+});
+resetBtn.addEventListener("click", () => {
+  const cards = document.querySelectorAll(".card");
+  sortSelect.value = "";
+  originalFavs.forEach((card) => resultContainer.appendChild(card));
+  resetBtn.hidden = true;
 });

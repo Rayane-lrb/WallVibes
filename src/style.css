@@ -163,6 +163,9 @@ button#themeBtn img {
   font-size: 16px;
   cursor: pointer;
 }
+#reset:hover {
+  opacity: 0.3;
+}
 
 .search-bar-container {
   position: absolute;

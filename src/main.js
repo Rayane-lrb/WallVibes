@@ -9,6 +9,8 @@ const resultContainer = document.getElementById("results-container");
 const searchBar = document.getElementById("searchInput");
 const geenResultaatbericht = document.getElementById("geenResultaatbericht");
 const sortSelect = document.getElementById("sortSelect");
+const resetBtn = document.getElementById("reset");
+const originalOrder = [];
 
 function themeSwitch(theme) {
   body.classList.remove("light-theme", "dark-theme");
@@ -60,6 +62,7 @@ function displayImages(data) {
     const divCard = document.createElement("div");
     divCard.classList.add("card", "hidden");
     divCard.dataset.name = item.name_nl;
+    originalOrder.push(divCard);
     divCard.innerHTML = `
       <img src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy" class="art_img" />
       <div class="card-info">
@@ -72,7 +75,6 @@ function displayImages(data) {
         <img src="/public/fav.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
       </div>
     `;
-
     const isFav = favs.find((fav) => fav.name_nl === item.name_nl);
     if (isFav) {
       divCard.querySelector(".fav-icon").src = "/public/fav_hover.svg";
@@ -108,6 +110,7 @@ const observer = new IntersectionObserver((entries) => {
 sortSelect.addEventListener("change", () => {
   const selectedValue = sortSelect.value;
   sortCards(selectedValue);
+  resetBtn.hidden = false;
 });
 
 function sortCards(selectedValue) {
@@ -153,4 +156,11 @@ searchBar.addEventListener("input", () => {
   } else {
     geenResultaatbericht.style.display = "none";
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  const cards = document.querySelectorAll(".card");
+  sortSelect.value = "";
+  originalOrder.forEach((card) => resultContainer.appendChild(card));
+  resetBtn.hidden = true;
 });
