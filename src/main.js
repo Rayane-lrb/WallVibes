@@ -44,7 +44,7 @@ async function fetchImages() {
   }
 }
 
-function displayImages(data) {
+export function displayImages(data) {
   data.results.forEach((item) => {
     const divCard = document.createElement("div");
     divCard.classList.add("card", "hidden");
