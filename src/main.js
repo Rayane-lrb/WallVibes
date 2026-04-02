@@ -49,17 +49,27 @@ function displayImages(data) {
     const divCard = document.createElement("div");
     divCard.classList.add("card", "hidden");
     divCard.innerHTML = `
-    <img src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy"></img>
-    <div class="card-info">
-    <h3 id="art_name">${item.name_nl}</h3>
-    <div class="name_date_div">
-    <h3 id="artist_name">${item.artist_name}</h3>
-    <h5>${item.real_date}</h5>
-    </div>
-    <h5>${item.postalcode}</h5>
-    </div>
-  
+      <img src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy" class="art_img" />
+      <div class="card-info">
+        <h3>${item.name_nl}</h3>
+        <div class="name_date_div">
+          <h3>${item.artist_name}</h3>
+          <h5><i class="lucide-calendar"></i> ${item.real_date}</h5>
+        </div>
+        <h5>${item.postalcode} Brussel</h5>
+<img src="/public/fav.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
+      </div>
     `;
+    const favIcons = divCard.querySelectorAll(".fav-icon");
+    favIcons.forEach((icon) => {
+      icon.addEventListener("click", () => {
+        if (icon.src.includes("/public/fav.svg")) {
+          icon.src = "/public/fav_hover.svg";
+        } else {
+          icon.src = "/public/fav.svg";
+        }
+      });
+    });
     resultContainer.appendChild(divCard);
     observer.observe(divCard);
   });
@@ -77,21 +87,21 @@ const observer = new IntersectionObserver((entries) => {
 sortSelect.addEventListener("change", () => {
   const selectedValue = sortSelect.value;
   sortCards(selectedValue);
-})
+});
 
 function sortCards(selectedValue) {
   const cards = Array.from(document.querySelectorAll(".card"));
 
-  cards.sort((a,b) => {
+  cards.sort((a, b) => {
     const nameA = a.querySelector("h3").textContent;
     const nameB = b.querySelector("h3").textContent;
     const dateA = new Date(a.querySelector(".name_date_div h5").textContent);
-    const dateB = new Date(b.querySelector(".name_date_div h5").textContent);        
+    const dateB = new Date(b.querySelector(".name_date_div h5").textContent);
 
-    if(selectedValue === "az") return nameA.localeCompare(nameB);
-    if(selectedValue === "za") return nameB.localeCompare(nameA);
-    if(selectedValue === "nieuwst") return dateB - dateA;
-    if(selectedValue === "oudste") return dateA - dateB;
+    if (selectedValue === "az") return nameA.localeCompare(nameB);
+    if (selectedValue === "za") return nameB.localeCompare(nameA);
+    if (selectedValue === "nieuwst") return dateB - dateA;
+    if (selectedValue === "oudste") return dateA - dateB;
   });
   cards.forEach((card) => resultContainer.appendChild(card));
 }
@@ -101,11 +111,10 @@ searchBar.addEventListener("input", () => {
   const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
-    if(card.textContent.toLocaleLowerCase().includes(searchedValue.toLowerCase())) {
+    if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
       card.style.display = "flex";
     } else {
       card.style.display = "none";
     }
-  })
-})
-
+  });
+});

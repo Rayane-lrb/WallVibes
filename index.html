@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="...." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap"
       rel="stylesheet"
-      href="https://unpkg.com/lucide-static/font/lucide.css"
     />
-    <title>ww-i</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>WallVibes</title>
   </head>
 
   <body>
@@ -17,9 +17,9 @@
       <div class="nav-div">
         <nav class="navbar">
           <div class="nav-left">
-            <h1 class="logo">WW-I</h1>
+            <h1 class="logo">WallVibes</h1>
             <ul class="nav-left-links">
-              <a href="#locaties">Menu</a>
+              <a href="index.html">Menu</a>
               <a href="#favorieten">Favorieten</a>
             </ul>
           </div>
@@ -32,13 +32,6 @@
       </div>
       <main id="main-content">
         <section class="search-filter-bar">
-          <div class="search-bar-container">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Zoek een locatie in Brussel..."
-            />
-          </div>
           <div class="filter-wrapper">
             <select id="sortSelect">
               <option value="" disabled selected hidden>Sorteren</option>
@@ -47,7 +40,13 @@
               <option value="nieuwst">Nieuwste eerst</option>
               <option value="oudste">Oudste eerst</option>
             </select>
-            <button id="resetFilters">X Reset</button>
+          </div>
+          <div class="search-bar-container">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Zoek een locatie in Brussel..."
+            />
           </div>
         </section>
         <section id="results-container"></section>
