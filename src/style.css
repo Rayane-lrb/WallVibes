@@ -107,20 +107,10 @@ button#themeBtn img {
   object-fit: contain;
 }
 
-#searchInput {
-  width: 400px;
-  height: 35px;
-  padding: 12 px 20px;
-  padding-left: 40 px;
-  border-radius: 10px;
-  border: none;
-  background-color: #e5e5e5;
-  font-size: 16px;
-  outline: none;
-}
+
 
 #geenResultaatbericht {
-  color: /*red*/#a9a5a5;
+  color: #a9a5a5;
   margin-top: 10px;
   font-weight: bold;
 }
@@ -154,10 +144,34 @@ button#themeBtn img {
   align-content: center;
 }
 
+.filter-wrapper #sortSelect {
+  width: 100px;
+  height: 35px;
+  padding: 12 px 20px;
+  padding-left: 40 px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e5e5e5;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .search-bar-container {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#searchInput {
+  width: 400px;
+  height: 35px;
+  padding: 12 px 20px;
+  padding-left: 40 px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e5e5e5;
+  font-size: 16px;
+  outline: none;
 }
 
 .card {
