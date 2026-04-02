@@ -65,8 +65,10 @@ function displayImages(data) {
       icon.addEventListener("click", () => {
         if (icon.src.includes("/public/fav.svg")) {
           icon.src = "/public/fav_hover.svg";
+          removeFromFavs(divCard);
         } else {
           icon.src = "/public/fav.svg";
+          addToFavs(divCard);
         }
       });
     });
@@ -113,8 +115,24 @@ searchBar.addEventListener("input", () => {
   cards.forEach((card) => {
     if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
       card.style.display = "flex";
+
     } else {
       card.style.display = "none";
     }
   });
 });
+
+function addToFavs(item) {
+  const favs = jSON.parse(localStorage.getItem("favs")) || [];
+  if(!favs.find(fav => fav.name_nl === item.name_nl)) {
+    favs.push(item);
+    localStorage.setItem("favs", JSON.stringify(favs));
+  } 
+}
+
+function removeFromFavs(item) {
+  const favs = jSON.parse(localStorage.getItem("favs")) || [];
+  const updateted = favs.filter(fav => fav.name_nl !== item.name_nl);
+  localStorage.setItem("favs", JSON.stringify(updateted));
+}
+
