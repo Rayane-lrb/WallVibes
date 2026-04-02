@@ -2,15 +2,18 @@ body.dark-theme {
   background-color: #2c2c2c;
   color: white;
 }
+
 body.light-theme {
   background-color: white;
   color: black;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-size: 20px;
 }
+
 h1,
 h2,
 h3 {
@@ -22,15 +25,18 @@ p,
 a {
   font-family: "Raleway", sans-serif;
 }
+
 a {
   text-decoration: none;
   color: black;
 }
+
 #app {
   margin: 0;
   padding: 0;
   width: 100%;
 }
+
 nav {
   width: 100%;
   background-color: #f0f0f0;
@@ -51,12 +57,12 @@ nav {
 }
 
 .nav-left h1 {
-  margin : 0;
+  margin: 0;
 }
 
 .nav-right {
-display : flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -82,6 +88,7 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
 button#themeBtn {
   width: 40px;
   height: 40px;
@@ -110,6 +117,12 @@ button#themeBtn img {
   background-color: #e5e5e5;
   font-size: 16px;
   outline: none;
+}
+
+#geenResultaatbericht {
+  color: /*red*/#a9a5a5;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 #results-container {
@@ -157,10 +170,12 @@ button#themeBtn img {
   flex-direction: column;
   transition: transform 0.3s ease;
 }
+
 .card:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
 }
+
 .card img.art_img {
   width: 100%;
   height: 200px;
@@ -169,11 +184,13 @@ button#themeBtn img {
   object-fit: cover;
   flex-shrink: 0;
 }
-.card > img {
+
+.card>img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
+
 .card {
   width: calc(33.33% - 14px);
   max-width: 430px;
@@ -214,7 +231,8 @@ button#themeBtn img {
   font-size: 10 px;
   color: #969595;
 }
-.card-info .name_date_div + h5 {
+
+.card-info .name_date_div+h5 {
   background-color: #bebebe;
   border-radius: 10px;
   width: 100px;

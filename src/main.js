@@ -4,6 +4,7 @@ const themeBtn = document.getElementById("themeBtn");
 const themeBtnImg = document.getElementById("themeBtn-img");
 const resultContainer = document.getElementById("results-container");
 const searchBar = document.getElementById("searchInput");
+const geenResultaatbericht = document.getElementById("geenResultaatbericht");
 const sortSelect = document.getElementById("sortSelect");
 
 function themeSwitch(theme) {
@@ -112,22 +113,32 @@ searchBar.addEventListener("input", () => {
   const searchedValue = searchBar.value;
   const cards = document.querySelectorAll(".card");
 
+  let visibleCount = 0;
+
   cards.forEach((card) => {
     if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
       card.style.display = "flex";
-
+      visibleCount++;
     } else {
       card.style.display = "none";
     }
   });
+
+  if (searchedValue === "") {
+    geenResultaatbericht.style.display = "none";
+  } else if (visibleCount === 0) {
+    geenResultaatbericht.style.display = "block";
+  } else {
+    geenResultaatbericht.style.display = "none";
+  }
 });
 
 function addToFavs(item) {
   const favs = jSON.parse(localStorage.getItem("favs")) || [];
-  if(!favs.find(fav => fav.name_nl === item.name_nl)) {
+  if (!favs.find(fav => fav.name_nl === item.name_nl)) {
     favs.push(item);
     localStorage.setItem("favs", JSON.stringify(favs));
-  } 
+  }
 }
 
 function removeFromFavs(item) {
