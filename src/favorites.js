@@ -30,7 +30,7 @@ function displayFavs() {
           <h3>${item.artist_name}</h3>
           <h5>${item.real_date}</h5>
         </div>
-        <h5>${item.postalcode} Brussel</h5>
+        <h5 class="postcode">${item.postalcode} Brussel</h5>
         <img src="/public/fav_hover.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
       </div>
     `;
@@ -73,12 +73,15 @@ function sortCards(selectedValue) {
     const nameB = b.querySelector("h3").textContent;
     const dateA = new Date(a.querySelector(".name_date_div h5").textContent);
     const dateB = new Date(b.querySelector(".name_date_div h5").textContent);
+    const gemeenteA = parseInt(a.querySelector(".postcode").textContent);
+    const gemeenteB = parseInt(b.querySelector(".postcode").textContent);
 
     if (selectedValue === "az") return nameA.localeCompare(nameB);
     if (selectedValue === "za") return nameB.localeCompare(nameA);
     if (selectedValue === "nieuwst") return dateB - dateA;
     if (selectedValue === "oudste") return dateA - dateB;
-    else return 0;
+    if (selectedValue === "per gemeente") return gemeenteA - gemeenteB;
+    else return ;
   });
   cards.forEach((card) => resultContainer.appendChild(card));
 }
@@ -91,6 +94,7 @@ searchBar.addEventListener("input", () => {
   cards.forEach((card) => {
     if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
       card.style.display = "flex";
+      visibleCount++;
     } else {
       card.style.display = "none";
     }
@@ -104,6 +108,7 @@ searchBar.addEventListener("input", () => {
     geenResultaatbericht.style.display = "none";
   }
 });
+
 function themeSwitch(theme) {
   body.classList.remove("light-theme", "dark-theme");
   body.classList.add(theme);
