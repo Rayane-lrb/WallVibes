@@ -1,4 +1,7 @@
 "use strict";
+import { addToFavs } from "./favUtils.js";
+import { removeFromFavs } from "./favUtils.js";
+
 const body = document.body;
 const themeBtn = document.getElementById("themeBtn");
 const themeBtnImg = document.getElementById("themeBtn-img");
@@ -45,34 +48,49 @@ async function fetchImages() {
   }
 }
 
-export function displayImages(data) {
+function displayImages(data) {
+  let favs = [];
+  try {
+    favs = JSON.parse(localStorage.getItem("favs")) || [];
+  } catch {
+    favs = [];
+  }
+
   data.results.forEach((item) => {
     const divCard = document.createElement("div");
     divCard.classList.add("card", "hidden");
+    divCard.dataset.name = item.name_nl;
     divCard.innerHTML = `
       <img src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy" class="art_img" />
       <div class="card-info">
         <h3>${item.name_nl}</h3>
         <div class="name_date_div">
           <h3>${item.artist_name}</h3>
-          <h5><i class="lucide-calendar"></i> ${item.real_date}</h5>
+          <h5>${item.real_date}</h5>
         </div>
         <h5>${item.postalcode} Brussel</h5>
-<img src="/public/fav.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
+        <img src="/public/fav.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
       </div>
     `;
+
+    const isFav = favs.find((fav) => fav.name_nl === item.name_nl);
+    if (isFav) {
+      divCard.querySelector(".fav-icon").src = "/public/fav_hover.svg";
+    }
+
     const favIcons = divCard.querySelectorAll(".fav-icon");
     favIcons.forEach((icon) => {
       icon.addEventListener("click", () => {
-        if (icon.src.includes("/public/fav.svg")) {
-          icon.src = "/public/fav_hover.svg";
-          removeFromFavs(divCard);
-        } else {
+        if (icon.src.includes("fav_hover.svg")) {
           icon.src = "/public/fav.svg";
-          addToFavs(divCard);
+          removeFromFavs(item);
+        } else {
+          icon.src = "/public/fav_hover.svg";
+          addToFavs(item);
         }
       });
     });
+
     resultContainer.appendChild(divCard);
     observer.observe(divCard);
   });
@@ -118,7 +136,7 @@ searchBar.addEventListener("input", () => {
   cards.forEach((card) => {
     if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
       card.style.display = "flex";
-      visibleCount++;
+
     } else {
       card.style.display = "none";
     }
@@ -135,10 +153,10 @@ searchBar.addEventListener("input", () => {
 
 function addToFavs(item) {
   const favs = jSON.parse(localStorage.getItem("favs")) || [];
-  if (!favs.find(fav => fav.name_nl === item.name_nl)) {
+  if(!favs.find(fav => fav.name_nl === item.name_nl)) {
     favs.push(item);
     localStorage.setItem("favs", JSON.stringify(favs));
-  }
+  } 
 }
 
 function removeFromFavs(item) {
