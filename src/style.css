@@ -86,7 +86,6 @@ nav {
 
 .nav-left-links a:hover {
   font-weight: bold;
-  text-decoration: underline;
   transform: scale(1.1);
 }
 
@@ -174,10 +173,10 @@ button#themeBtn img {
 }
 
 #searchInput {
-  width: 400px;
-  height: 35px;
-  padding: 12 px 20px;
-  padding-left: 40 px;
+  width: 350px;
+  height: 15px;
+  padding: 12px 15px;
+  padding-left: 18px;
   border-radius: 10px;
   border: none;
   background-color: #e5e5e5;
