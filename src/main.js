@@ -123,6 +123,7 @@ function sortCards(selectedValue) {
     if (selectedValue === "za") return nameB.localeCompare(nameA);
     if (selectedValue === "nieuwst") return dateB - dateA;
     if (selectedValue === "oudste") return dateA - dateB;
+    else return 0;
   });
   cards.forEach((card) => resultContainer.appendChild(card));
 }
@@ -150,18 +151,3 @@ searchBar.addEventListener("input", () => {
     geenResultaatbericht.style.display = "none";
   }
 });
-
-function addToFavs(item) {
-  const favs = jSON.parse(localStorage.getItem("favs")) || [];
-  if(!favs.find(fav => fav.name_nl === item.name_nl)) {
-    favs.push(item);
-    localStorage.setItem("favs", JSON.stringify(favs));
-  } 
-}
-
-function removeFromFavs(item) {
-  const favs = jSON.parse(localStorage.getItem("favs")) || [];
-  const updateted = favs.filter(fav => fav.name_nl !== item.name_nl);
-  localStorage.setItem("favs", JSON.stringify(updateted));
-}
-

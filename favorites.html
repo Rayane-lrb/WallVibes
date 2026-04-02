@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-        <div id="app">
+    <div id="app">
       <div class="nav-div">
         <nav class="navbar">
           <div class="nav-left">
@@ -23,8 +27,9 @@
             </button>
           </div>
         </nav>
-        <main>
-          <section class="search-filter-bar">
+      </div>
+      <main id="main-content">
+        <section class="search-filter-bar">
           <div class="filter-wrapper">
             <select id="sortSelect">
               <option value="" disabled selected hidden>Sorteren</option>
@@ -42,11 +47,12 @@
             />
           </div>
         </section>
-        <section id="results-container">
-
-        </section>
-        </main>
-      </div>     
-      <script type="module" src="src/favorites.js"></script>
+        <p id="geenResultaatbericht" style="display: none">
+          Geen resultaat gevonden
+        </p>
+        <section id="results-container"></section>
+      </main>
+    </div>
+    <script type="module" src="/src/favorites.js"></script>
   </body>
 </html>

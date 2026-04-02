@@ -3,6 +3,9 @@ import { addToFavs } from "./favUtils.js";
 import { removeFromFavs } from "./favUtils.js";
 
 const resultContainer = document.getElementById("results-container");
+const searchBar = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+const geenResultaatbericht = document.getElementById("geenResultaatbericht"); 
 
 window.addEventListener("load", () => {
   displayFavs();
@@ -12,7 +15,6 @@ function displayFavs() {
   const favs = JSON.parse(localStorage.getItem("favs")) || [];
   console.log(favs);
   favs.forEach((item) => {
-    console.log(item);
     const divCard = document.createElement("div");
     divCard.classList.add("card", "hidden");
     divCard.dataset.name = item.name_nl;
@@ -28,9 +30,8 @@ function displayFavs() {
         <img src="/public/fav_hover.svg" class="fav-icon" width="24" height="24" alt="favoriet" />
       </div>
     `;
-    if(favs.find((fav) => fav.name_nl === item.name_nl)) {
-
-      }
+    if (favs.find((fav) => fav.name_nl === item.name_nl)) {
+    }
 
     const favIcons = divCard.querySelectorAll(".fav-icon");
     favIcons.forEach((icon) => {
@@ -58,4 +59,30 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
+});
+sortSelect.addEventListener("change", () => {
+  const selectedValue = sortSelect.value;
+  sortCards(selectedValue);
+});
+searchBar.addEventListener("input", () => {
+  const searchedValue = searchBar.value;
+  const cards = document.querySelectorAll(".card");
+
+  let visibleCount = 0;
+
+  cards.forEach((card) => {
+    if (card.textContent.toLowerCase().includes(searchedValue.toLowerCase())) {
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  if (searchedValue === "") {
+    geenResultaatbericht.style.display = "none";
+  } else if (visibleCount === 0) {
+    geenResultaatbericht.style.display = "block";
+  } else {
+    geenResultaatbericht.style.display = "none";
+  }
 });
