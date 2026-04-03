@@ -50,6 +50,14 @@ De API bevat:
 
 
 ## Technische vereisten 
+| Functienaam | Bestand | Beginregel | Eindregel |
+|---|---|---|---|
+| `themeSwitch` | `main.js` | 13 | 21 |
+| `fetchImages` | `main.js` | 33 | 43 |
+| `displayImages` | `main.js` | 45 | 94 |
+| `sortCards` | `main.js` | 103 | 120 |
+| `addToFavs` | `favUtils.js` | 1 | 7 |
+| `removeFromFavs` | `favUtils.js` | 9 | 13 |
 
 ###  DOM manipulatie
 - Elementen selecteren met:
