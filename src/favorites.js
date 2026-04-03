@@ -67,12 +67,12 @@ function displayFavs() {
         if (icon.src.includes("fav_hover.svg")) {
           icon.src = "/public/fav.svg";
           removeFromFavs(item);
-          divCard.remove();
-          if (!favs.length) {
-            geenResultaatbericht.style.display = "block";
-          } else {
-            geenResultaatbericht.style.display = "none";
-          }
+          geenResultaatbericht.style.display = "block";
+        } else {
+          geenResultaatbericht.style.display = "none";
+        }
+        divCard.remove();
+        if (!favs.length) {
         } else {
           icon.src = "/public/fav_hover.svg";
           addToFavs(item);
