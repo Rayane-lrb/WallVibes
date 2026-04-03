@@ -38,6 +38,12 @@ window.addEventListener("load", () => {
 });
 function displayFavs() {
   const favs = JSON.parse(localStorage.getItem("favs")) || [];
+  if (!favs.length) {
+    geenResultaatbericht.style.display = "block";
+  } else {
+    geenResultaatbericht.style.display = "none";
+  }
+
   favs.forEach((item) => {
     const divCard = document.createElement("div");
     originalFavs.push(divCard);
@@ -62,6 +68,11 @@ function displayFavs() {
           icon.src = "/public/fav.svg";
           removeFromFavs(item);
           divCard.remove();
+          if (!favs.length) {
+            geenResultaatbericht.style.display = "block";
+          } else {
+            geenResultaatbericht.style.display = "none";
+          }
         } else {
           icon.src = "/public/fav_hover.svg";
           addToFavs(item);
