@@ -64,7 +64,7 @@ function displayImages(data) {
     divCard.dataset.name = item.name_nl;
     originalOrder.push(divCard);
     divCard.innerHTML = `
-      <img src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy" class="art_img" />
+      <img class="art_img" src="${item.url_image ? item.url_image.url : "/placeholder.jpg"}" loading="lazy" />
       <div class="card-info">
         <h3>${item.name_nl}</h3>
         <div class="name_date_div">
